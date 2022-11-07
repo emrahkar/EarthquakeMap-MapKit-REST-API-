@@ -55,11 +55,26 @@ struct EarthquakeView: View {
                 .shadow(color: Color.black.opacity(0.8), radius: 15, x: 0, y: 20)
                 
                 Spacer()
+                
+                ZStack {
+                    ForEach(earthquakeDataViewModel.earthquakeData.earthquakes) { earthquake in
+                        
+                        if earthquakeDataViewModel.earthquakeOnMap == earthquake {
+                            EarthquakePreviewView(earthquake: earthquake)
+                                .shadow(color: Color.black.opacity(0.8), radius: 20)
+                                .padding()
+                                .transition(.asymmetric(
+                                    insertion: .move(edge: .top),
+                                    removal: .move(edge: .bottom)))
+                        }
+                    }
+                }
             }
         
         }
         .onAppear {
             earthquakeDataViewModel.downloadEarthquakeData()
+            
         }
     }
 }

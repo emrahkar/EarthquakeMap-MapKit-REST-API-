@@ -23,7 +23,8 @@ class EarthquakeDataViewModel: ObservableObject {
     @Published var errorMsg: String? = nil
 
     let earthquakeDataLoader = NetworkingService()
-    let mapSpan = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+    let mapSpan = MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1)
+    let detailedMapSpan = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
     
     init() {
      

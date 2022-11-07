@@ -18,6 +18,8 @@
 		BF1D74752913D2C600852A0E /* EarthquakeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1D74742913D2C600852A0E /* EarthquakeListView.swift */; };
 		BF1D74772913D36700852A0E /* EarthquakeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1D74762913D36700852A0E /* EarthquakeView.swift */; };
 		BF1D74792913E3D500852A0E /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1D74782913E3D500852A0E /* AnnotationView.swift */; };
+		BF756F4229193F0800109E10 /* EarthquakePreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF756F4129193F0800109E10 /* EarthquakePreviewView.swift */; };
+		BF756F4429194B0B00109E10 /* EarthquakeDetailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF756F4329194B0B00109E10 /* EarthquakeDetailedView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,8 @@
 		BF1D74742913D2C600852A0E /* EarthquakeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeListView.swift; sourceTree = "<group>"; };
 		BF1D74762913D36700852A0E /* EarthquakeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeView.swift; sourceTree = "<group>"; };
 		BF1D74782913E3D500852A0E /* AnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
+		BF756F4129193F0800109E10 /* EarthquakePreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakePreviewView.swift; sourceTree = "<group>"; };
+		BF756F4329194B0B00109E10 /* EarthquakeDetailedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeDetailedView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +111,8 @@
 				BF1D74762913D36700852A0E /* EarthquakeView.swift */,
 				BF1D74742913D2C600852A0E /* EarthquakeListView.swift */,
 				BF1D74782913E3D500852A0E /* AnnotationView.swift */,
+				BF756F4129193F0800109E10 /* EarthquakePreviewView.swift */,
+				BF756F4329194B0B00109E10 /* EarthquakeDetailedView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -196,8 +202,10 @@
 				BF1D74752913D2C600852A0E /* EarthquakeListView.swift in Sources */,
 				BF08EF4B29115A4C00353196 /* EarthquakeData.swift in Sources */,
 				BF08EF4E2911625D00353196 /* NetworkingService.swift in Sources */,
+				BF756F4429194B0B00109E10 /* EarthquakeDetailedView.swift in Sources */,
 				BF1D74772913D36700852A0E /* EarthquakeView.swift in Sources */,
 				BF08EF502911627200353196 /* NetworkingError.swift in Sources */,
+				BF756F4229193F0800109E10 /* EarthquakePreviewView.swift in Sources */,
 				BF08EF522911664F00353196 /* EarthquakeDataViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

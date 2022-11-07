@@ -18,11 +18,15 @@ struct EarthquakeData: Codable {
 }
 
 
-struct Earthquake: Identifiable, Codable {
-    
-    let id: String
+struct Earthquake: Identifiable, Codable, Equatable {
+  
+    var id: String
     let properties: Property
     let geometry: Geometry
+    
+    static func == (lhs: Earthquake, rhs: Earthquake) -> Bool {
+        lhs.id == rhs.id
+    }
 }
 
 

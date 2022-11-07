@@ -24,10 +24,7 @@ struct EarthquakeListView: View {
                     VStack(alignment: .leading, spacing: 10) {
                         Text(earthquake.properties.location)
                             .font(.headline)
-                            
-                        Text("magnitude: \(earthquake.properties.mag, specifier: "%.1f")")
-                            .font(.subheadline)
-                            
+        
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                 }
