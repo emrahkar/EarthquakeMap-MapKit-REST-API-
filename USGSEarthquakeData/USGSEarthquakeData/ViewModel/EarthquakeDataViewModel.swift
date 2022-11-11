@@ -14,7 +14,8 @@ class EarthquakeDataViewModel: ObservableObject {
     @Published var earthquakeData = EarthquakeData(earthquakes: [Earthquake]())
     @Published var mapEarthquakeRegion: MKCoordinateRegion = MKCoordinateRegion()
     @Published var showAllEarthquakes: Bool = false
-    @Published var earthquakeOnMap:Earthquake {
+    @Published var earthquakeDetailSheet: Earthquake? = nil
+    @Published var earthquakeOnMap:Earthquake{
         didSet {
             updateMapEarthquakeRegion(earthquake: earthquakeOnMap)
         }
@@ -32,9 +33,10 @@ class EarthquakeDataViewModel: ObservableObject {
         self.earthquakeOnMap = Earthquake(id: "us7000im5c",
                                           properties: Property(mag: 4.9, location: "28 km S of Coalcomán de Vázquez Pallares, Mexico", magType: "mb", title: "M 4.7 - 28 km S of Coalcomán de Vázquez Pallares, Mexico", url: "https://earthquake.usgs.gov/earthquakes/eventpage/us7000im4p"),
                                           geometry: Geometry(coordinates: [-103.1235, 18.5182, 65.227]))
-        self.updateMapEarthquakeRegion(earthquake: Earthquake(id: "us7000im5c",
-                                                              properties: Property(mag: 4.9, location: "28 km S of Coalcomán de Vázquez Pallares, Mexico", magType: "mb", title: "M 4.7 - 28 km S of Coalcomán de Vázquez Pallares, Mexico", url: "https://earthquake.usgs.gov/earthquakes/eventpage/us7000im4p"),
-                                                              geometry: Geometry(coordinates: [-103.1235, 18.5182, 65.227])))
+        //self.updateMapEarthquakeRegion(earthquake: Earthquake(id: "us7000im5c",
+//                                                              properties: Property(mag: 4.9, location: "28 km S of Coalcomán de Vázquez Pallares, Mexico", magType: "mb", title: "M 4.7 - 28 km S of Coalcomán de Vázquez Pallares, Mexico", url: "https://earthquake.usgs.gov/earthquakes/eventpage/us7000im4p"),
+//                                                              geometry: Geometry(coordinates: [-103.1235, 18.5182, 65.227])))
+       
     }
     
     func updateMapEarthquakeRegion(earthquake: Earthquake) {
@@ -55,6 +57,25 @@ class EarthquakeDataViewModel: ObservableObject {
             showAllEarthquakes = false
         }
     }
+    
+    func nextEarthquake(earthquake: Earthquake) {
+        guard let currentIndex = earthquakeData.earthquakes.firstIndex(where: {$0 == earthquakeOnMap}) else {
+            return
+        }
+        
+        let newIndex = currentIndex + 1
+        
+        guard earthquakeData.earthquakes.indices.contains(newIndex) else {
+            guard let firstEarthquake = earthquakeData.earthquakes.first else { return }
+            changeEarthQuakeOnMap(earthquake: firstEarthquake)
+            return
+        }
+        
+        let nextEarthquake = earthquakeData.earthquakes[newIndex]
+        changeEarthQuakeOnMap(earthquake: nextEarthquake)
+    }
+    
+    
     func downloadEarthquakeData() {
         
         loading = true

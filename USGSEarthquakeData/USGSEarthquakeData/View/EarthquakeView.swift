@@ -11,6 +11,7 @@ import MapKit
 struct EarthquakeView: View {
     
     @EnvironmentObject var earthquakeDataViewModel: EarthquakeDataViewModel
+    
     var body: some View {
         ZStack {
             
@@ -19,6 +20,9 @@ struct EarthquakeView: View {
                 annotationContent: { earthquake in
                     MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: earthquake.geometry.coordinates[1], longitude: earthquake.geometry.coordinates[0])) {
                             AnnotationView()
+                            .scaleEffect(earthquakeDataViewModel.earthquakeOnMap == earthquake ? 1.0 : 0.6)
+                            
+                            
                     }
                 }
             )
@@ -38,7 +42,7 @@ struct EarthquakeView: View {
                             .overlay(alignment: .leading){
                                 Image(systemName: "arrow.down")
                                     .font(.title3)
-                                    .foregroundColor(Color.red)
+                                    .foregroundColor(Color.blue)
                                     .padding(10)
                                     .rotationEffect(Angle(degrees: earthquakeDataViewModel.showAllEarthquakes ? 180 : 0))
                                 
@@ -64,8 +68,8 @@ struct EarthquakeView: View {
                                 .shadow(color: Color.black.opacity(0.8), radius: 20)
                                 .padding()
                                 .transition(.asymmetric(
-                                    insertion: .move(edge: .top),
-                                    removal: .move(edge: .bottom)))
+                                    insertion: .move(edge: .bottom),
+                                    removal: .move(edge: .top)))
                         }
                     }
                 }
@@ -75,6 +79,9 @@ struct EarthquakeView: View {
         .onAppear {
             earthquakeDataViewModel.downloadEarthquakeData()
             
+        }
+        .sheet(item: $earthquakeDataViewModel.earthquakeDetailSheet, onDismiss: nil) { earthquake in
+            EarthquakeDetailedView(earthquake: earthquake)
         }
     }
 }

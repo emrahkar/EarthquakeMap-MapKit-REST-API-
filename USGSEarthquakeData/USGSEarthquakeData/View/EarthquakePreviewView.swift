@@ -19,7 +19,7 @@ struct EarthquakePreviewView: View {
             
             HStack {
                 Button {
-                    
+                    earthquakeDataViewModel.earthquakeDetailSheet = earthquake
                 } label: {
                     Text("Details")
                         .font(.headline)
@@ -31,7 +31,7 @@ struct EarthquakePreviewView: View {
               
                 
                 Button {
-                    
+                    earthquakeDataViewModel.nextEarthquake(earthquake: earthquake)
                 } label: {
                     Text("Next")
                         .font(.headline)
